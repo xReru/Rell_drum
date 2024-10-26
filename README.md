@@ -1,3 +1,3 @@
 # rell_drum
 
-A new Flutter project.
+A Music Drum App inspired by Real Drum using flutter
