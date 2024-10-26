@@ -1,18 +1,16 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
-class MainLayout extends StatefulWidget {
-  const MainLayout({super.key});
+class MainLayout2 extends StatefulWidget {
+  const MainLayout2({super.key});
 
   @override
-  State<MainLayout> createState() => _MainLayoutState();
+  State<MainLayout2> createState() => _MainLayout2State();
 }
 
-class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
-
+class _MainLayout2State extends State<MainLayout2> with TickerProviderStateMixin {
   late List<AnimationController> _controllers;
   late List<Animation<double>> _scaleAnimations;
-
 
   @override
   void initState() {
@@ -106,6 +104,22 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
               ),
             ),
             Positioned(
+              right: 620,
+              top: 210,
+              child: GestureDetector(
+                onTap: () => _onTap(0), // Pass the index for the audio
+                child: ScaleTransition(
+                  scale: _scaleAnimations[0],
+                  child: Image.asset(
+                    'assets/images/openhh.png',
+                    fit: BoxFit.contain,
+                    height: 150,
+                    width: 150,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
               left: 160,
               top: 200,
               child: GestureDetector(
@@ -137,22 +151,6 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                   )),
             ),
             Positioned(
-              left: 580,
-              top: 210,
-              child: GestureDetector(
-                onTap: () => _onTap(0), // Pass the index for the audio
-                child: ScaleTransition(
-                  scale: _scaleAnimations[0],
-                  child: Image.asset(
-                    'assets/images/openhh.png',
-                    fit: BoxFit.contain,
-                    height: 150,
-                    width: 150,
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
               left: 295,
               top: 180,
               child: GestureDetector(
@@ -168,7 +166,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                   )),
             ),
             Positioned(
-              left: 1,
+              left: 600,
               top: 180,
               child: GestureDetector(
                   onTap: () => _onTap(4),
@@ -177,8 +175,8 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                     child: Image.asset(
                       'assets/images/floor.png',
                       fit: BoxFit.contain,
-                      height: 165,
-                      width: 165,
+                      height: 180,
+                      width: 180,
                     ),
                   )),
             ),
@@ -243,21 +241,6 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                   )),
             ),
             Positioned(
-              left: 570,
-              top: 140,
-              child: GestureDetector(
-                  onTap: () => _onTap(10),
-                  child: ScaleTransition(
-                    scale: _scaleAnimations[10],
-                    child: Image.asset(
-                      'assets/images/closehh.png',
-                      fit: BoxFit.contain,
-                      height: 150,
-                      width: 150,
-                    ),
-                  )),
-            ),
-            Positioned(
               left: 560,
               top: 40,
               child: GestureDetector(
@@ -267,8 +250,23 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                     child: Image.asset(
                       'assets/images/ride.png',
                       fit: BoxFit.contain,
-                      height: 160,
-                      width: 160,
+                      height: 170,
+                      width: 170,
+                    ),
+                  )),
+            ),
+            Positioned(
+              left: 57,
+              top: 125,
+              child: GestureDetector(
+                  onTap: () => _onTap(10),
+                  child: ScaleTransition(
+                    scale: _scaleAnimations[10],
+                    child: Image.asset(
+                      'assets/images/closehh.png',
+                      fit: BoxFit.contain,
+                      height: 150,
+                      width: 150,
                     ),
                   )),
             ),
