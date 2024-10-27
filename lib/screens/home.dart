@@ -64,7 +64,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
         _playAudio('tom2');
         break;
       case 7:
-        _playAudio('tom2');
+        _playAudio('tom3');
         break;
       case 8:
         _playAudio('crashr');
@@ -137,7 +137,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                   )),
             ),
             Positioned(
-              left: 580,
+              left: 600,
               top: 210,
               child: GestureDetector(
                 onTap: () => _onTap(0), // Pass the index for the audio
@@ -154,7 +154,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
             ),
             Positioned(
               left: 295,
-              top: 180,
+              top: 190,
               child: GestureDetector(
                   onTap: () => _onTap(3),
                   child: ScaleTransition(
@@ -183,7 +183,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                   )),
             ),
             Positioned(
-                left: 170,
+                left: 200,
                 top: 135,
                 child: GestureDetector(
                   onTap: () => _onTap(5),
@@ -197,6 +197,21 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                     ),
                   ),
                 )),
+            Positioned(
+              left: 420,
+              top: 135,
+              child: GestureDetector(
+                  onTap: () => _onTap(7),
+                  child: ScaleTransition(
+                    scale: _scaleAnimations[7],
+                    child: Image.asset(
+                      'assets/images/tom.png',
+                      fit: BoxFit.contain,
+                      height: 140,
+                      width: 140,
+                    ),
+                  )),
+            ),
             Positioned(
                 left: 310,
                 top: 100,
@@ -213,21 +228,6 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                   ),
                 )),
             Positioned(
-              left: 450,
-              top: 135,
-              child: GestureDetector(
-                  onTap: () => _onTap(7),
-                  child: ScaleTransition(
-                    scale: _scaleAnimations[7],
-                    child: Image.asset(
-                      'assets/images/tom.png',
-                      fit: BoxFit.contain,
-                      height: 140,
-                      width: 140,
-                    ),
-                  )),
-            ),
-            Positioned(
               left: 410,
               top: 40,
               child: GestureDetector(
@@ -243,8 +243,8 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                   )),
             ),
             Positioned(
-              left: 570,
-              top: 140,
+              left: 610,
+              top: 150,
               child: GestureDetector(
                   onTap: () => _onTap(10),
                   child: ScaleTransition(
@@ -259,7 +259,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
             ),
             Positioned(
               left: 560,
-              top: 40,
+              top: 30,
               child: GestureDetector(
                   onTap: () => _onTap(9),
                   child: ScaleTransition(
