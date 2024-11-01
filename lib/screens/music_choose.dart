@@ -62,7 +62,11 @@ class _MusicChooseState extends State<MusicChoose> {
       appBar: AppBar(
         title: const Text('Select Music', style: TextStyle(color: Color(0xffEEC640))),
         backgroundColor: const Color(0xff101720),
+        iconTheme: const IconThemeData(
+          color: Color(0xffeec640),
+        ),
       ),
+      
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _musicFiles.isEmpty
@@ -83,6 +87,7 @@ class _MusicChooseState extends State<MusicChoose> {
                     );
                   },
                 ),
+      backgroundColor: const Color(0xff101720),
     );
   }
 }

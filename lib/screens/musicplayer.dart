@@ -68,7 +68,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
   void _onVolumeChanged(double value) {
     setState(() {
       _volume = value;
-      _audioPlayer.setVolume(_volume); // Update the volume based on the slider
+      _audioPlayer.setVolume(_volume);
     });
   }
 
@@ -79,86 +79,113 @@ class _MusicPlayerState extends State<MusicPlayer> {
   }
 
   void _showVolumeSlider(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        backgroundColor: const Color(0xff101720),
-        content: SizedBox(
-          width: 300, // Set a fixed width for the slider
-          height: 100, // Set a fixed height for the slider
-          child: StatefulBuilder(
-            builder: (BuildContext context, StateSetter setState) {
-              return Slider(
-                value: _volume, // Use the current volume for the slider
-                onChanged: (value) {
-                  _onVolumeChanged(value); // Update volume and UI
-                  setState(() {
-                    _volume = value; // Update the local state of the slider
-                  });
-                },
-                min: 0.0,
-                max: 1.0,
-                activeColor: const Color(0xffEEC640),
-              );
-            },
-          ),
-        ),
-        actions: [
-          TextButton(
-            child: const Text(
-              'Close',
-              style: TextStyle(color: Color(0xffeec640)),
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: const Color(0xff101720),
+          content: SizedBox(
+            width: 250,
+            height: 100, // Adjusted height to fit the text label
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Music Volume',
+                  style: TextStyle(
+                    color: Color(0xffEEC640),
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 10), // Space between label and slider
+                StatefulBuilder(
+                  builder: (BuildContext context, StateSetter setState) {
+                    return Slider(
+                      value: _volume,
+                      onChanged: (value) {
+                        _onVolumeChanged(value);
+                        setState(() {
+                          _volume = value;
+                        });
+                      },
+                      min: 0.0,
+                      max: 1.0,
+                      activeColor: const Color(0xffEEC640),
+                    );
+                  },
+                ),
+              ],
             ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
           ),
-        ],
-      );
-    },
-  );
-}
-
+          actions: [
+            TextButton(
+              child: const Text(
+                'Close',
+                style: TextStyle(color: Color(0xffeec640)),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Play Music',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Color(0xffeec640),
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: Container(
+          color: const Color(0xff101720),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Row(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.arrow_back, color: Color(0xffEEC640)),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              const Text(
+                'Rell Drum',
+                style: TextStyle(
+                  color: Color(0xffEEC640),
+                  fontSize: 30,
+                ),
+              ),
+              const Spacer(),
+              Row(
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.skip_previous_rounded, color: Color(0xffEEC640)),
+                    onPressed: _skipBack,
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
+                    color:const Color(0xffEEC640)),
+                    onPressed: isPlaying ? _pauseMusic : _resumeMusic,
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.skip_next_rounded, color: Color(0xffEEC640)),
+                    onPressed: _skipForward,
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.volume_up_rounded, color: Color(0xffEEC640)),
+                    onPressed: () => _showVolumeSlider(context),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
-        backgroundColor: const Color(0xff101720),
-        iconTheme: const IconThemeData(
-          color: Color(0xffeec640),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.skip_previous_rounded),
-            onPressed: _skipBack,
-          ),
-          IconButton(
-            icon: Icon(
-              isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
-            ),
-            onPressed: isPlaying ? _pauseMusic : _resumeMusic,
-          ),
-          IconButton(
-            icon: const Icon(Icons.skip_next_rounded),
-            onPressed: _skipForward,
-          ),
-          IconButton(
-            icon: const Icon(Icons.volume_up_rounded),
-            onPressed: () => _showVolumeSlider(context), // Show volume slider dialog
-          ),
-        ],
       ),
-      body: const Expanded(child: MainLayout()),
+      body: const MainLayout(),
     );
   }
 }

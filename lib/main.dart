@@ -55,14 +55,6 @@ class _MainAppState extends State<MainApp> {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               children: [
-                IconButton(
-                  icon: Image.asset('assets/icons/menu.png',
-                      height: 24, width: 24),
-                  onPressed: () {
-                    _scaffoldKey.currentState?.openDrawer();
-                  },
-                ),
-                const Spacer(),
                 const Text(
                   'Rell Drum',
                   style: TextStyle(
@@ -70,7 +62,7 @@ class _MainAppState extends State<MainApp> {
                     fontSize: 30,
                   ),
                 ),
-                const Spacer(),
+                const Spacer(), // Spacer to push icons to the right
                 Row(
                   children: [
                     Builder(
@@ -130,46 +122,6 @@ class _MainAppState extends State<MainApp> {
                 ),
               ],
             ),
-          ),
-        ),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              DrawerHeader(
-                child: const Text(
-                  'Rell Drum',
-                  style: TextStyle(color: Color(0xffEEC640), fontSize: 24),
-                ),
-                decoration: const BoxDecoration(color: Color(0xff101720)),
-              ),
-              ListTile(
-                leading: const Icon(Icons.music_note_rounded,
-                    color: Color(0xffEEC640)),
-                title: const Text('Play Music',
-                    style: TextStyle(color: Color(0xffEEC640))),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.settings, color: Color(0xffEEC640)),
-                title: const Text('Settings',
-                    style: TextStyle(color: Color(0xffEEC640))),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.info, color: Color(0xffEEC640)),
-                title: const Text('About',
-                    style: TextStyle(color: Color(0xffEEC640))),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AboutLayout(),
-                    ),
-                  );
-                },
-              ),
-            ],
           ),
         ),
         body: AnimatedOpacity(
