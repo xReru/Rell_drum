@@ -4,9 +4,11 @@ import 'screens/home.dart';
 import 'screens/lefty_ui.dart';
 import 'screens/musicplayer.dart';
 import 'screens/about.dart';
+import 'screens/music_choose.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
   runApp(const MainApp());
@@ -43,127 +45,138 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Builder(
-        builder: (BuildContext context) {
-          return Scaffold(
-            key: _scaffoldKey,
-            extendBodyBehindAppBar: true,
-            appBar: AppBar(
-              leading: IconButton(
-                icon: Image.asset(
-                  'assets/icons/menu.png',
-                  height: 32,
-                  width: 32,
-                ),
-                onPressed: () {
-                  _scaffoldKey.currentState?.openDrawer();
-                },
-              ),
-              title: const Padding(
-                padding: EdgeInsets.only(top: 5),
-                child: Center(
-                  child: Text(
-                    'Rell Drum',
-                    style: TextStyle(
-                      color: Color(0xffEEC640),
-                      fontSize: 30,
-                    ),
-                  ),
-                ),
-              ),
-              backgroundColor: const Color(0xff101720),
-              toolbarHeight: 50,
-              actions: [
+      home: Scaffold(
+        key: _scaffoldKey,
+        extendBodyBehindAppBar: true,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(50),
+          child: Container(
+            color: const Color(0xff101720),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              children: [
                 IconButton(
-                  icon: Image.asset(
-                    'assets/icons/rightoleft.png',
-                    height: 32,
-                    width: 32,
-                  ),
+                  icon: Image.asset('assets/icons/menu.png',
+                      height: 24, width: 24),
                   onPressed: () {
-                    _changeBody();
+                    _scaffoldKey.currentState?.openDrawer();
                   },
                 ),
-                const SizedBox(width: 15),
-              ],
-            ),
-            drawer: Drawer(
-              child: Container(
-                color: const Color(
-                    0xff101720), // Background color of the whole drawer
-                child: ListView(
-                  padding: EdgeInsets.zero,
+                const Spacer(),
+                const Text(
+                  'Rell Drum',
+                  style: TextStyle(
+                    color: Color(0xffEEC640),
+                    fontSize: 30,
+                  ),
+                ),
+                const Spacer(),
+                Row(
                   children: [
-                    Container(
-                      height: 100,
-                      color: const Color(
-                          0xff101720), // Drawer header background color
-                      child: const DrawerHeader(
-                        margin: EdgeInsets.zero,
-                        padding: EdgeInsets.all(16.0),
-                        child: Text(
-                          'Rell Drum',
-                          style: TextStyle(
-                            color: Color(0xffEEC640),
-                            fontSize: 24,
-                          ),
-                        ),
-                      ),
-                    ),
-                    ListTile(
-                      tileColor: const Color(
-                          0xff101720), 
-                      leading: const Icon(Icons.music_note_rounded, color: Color(0xffEEC640)),
-                      title: const Text(
-                        'Play Music',
-                        style: TextStyle(color: Color(0xffEEC640)),
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                        setState(() {
-                          _currentBody = const MainLayout();
-                        });
-                      },
-                    ),
-                    ListTile(
-                      tileColor: const Color(0xff101720),
-                      leading:
-                          const Icon(Icons.settings, color: Color(0xffEEC640)),
-                      title: const Text(
-                        'Settings',
-                        style: TextStyle(color: Color(0xffEEC640)),
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                        setState(() {
-                          _currentBody = const MusicPlayer();
-                        });
-                      },
-                    ),
-                    ListTile(
-                      tileColor: const Color(0xff101720),
-                      leading: const Icon(Icons.info, color: Color(0xffEEC640)),
-                      title: const Text(
-                        'About',
-                        style: TextStyle(color: Color(0xffEEC640)),
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const AboutLayout(),
-                          ),
+                    Builder(
+                      builder: (BuildContext context) {
+                        return IconButton(
+                          icon: const Icon(Icons.music_note,
+                              color: Color(0xffEEC640)),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const MusicChoose(),
+                              ),
+                            );
+                          },
                         );
                       },
                     ),
+                    Builder(
+                      builder: (BuildContext context) {
+                        return IconButton(
+                          icon: const Icon(Icons.settings,
+                              color: Color(0xffEEC640)),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AboutLayout(),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                    Builder(
+                      builder: (BuildContext context) {
+                        return IconButton(
+                          icon:
+                              const Icon(Icons.info, color: Color(0xffEEC640)),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AboutLayout(),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                    IconButton(
+                      icon: Image.asset('assets/icons/rightoleft.png',
+                          height: 24, width: 24),
+                      onPressed: _changeBody,
+                    ),
                   ],
                 ),
-              ),
+              ],
             ),
-            body: _currentBody,
-          );
-        },
+          ),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                child: const Text(
+                  'Rell Drum',
+                  style: TextStyle(color: Color(0xffEEC640), fontSize: 24),
+                ),
+                decoration: const BoxDecoration(color: Color(0xff101720)),
+              ),
+              ListTile(
+                leading: const Icon(Icons.music_note_rounded,
+                    color: Color(0xffEEC640)),
+                title: const Text('Play Music',
+                    style: TextStyle(color: Color(0xffEEC640))),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.settings, color: Color(0xffEEC640)),
+                title: const Text('Settings',
+                    style: TextStyle(color: Color(0xffEEC640))),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.info, color: Color(0xffEEC640)),
+                title: const Text('About',
+                    style: TextStyle(color: Color(0xffEEC640))),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AboutLayout(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+        body: AnimatedOpacity(
+          opacity: _opacity,
+          duration: const Duration(milliseconds: 300),
+          child: _currentBody,
+        ),
       ),
     );
   }
