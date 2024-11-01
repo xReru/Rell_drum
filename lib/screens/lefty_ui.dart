@@ -128,7 +128,7 @@ class _MainLayout2State extends State<MainLayout2>
                 child: ScaleTransition(
                   scale: _scaleAnimations[1],
                   child: Image.asset(
-                    'assets/images/kick.png',
+                    'assets/images/kickr.png',
                     fit: BoxFit.contain,
                     height: 180,
                     width: 180,
@@ -189,7 +189,7 @@ class _MainLayout2State extends State<MainLayout2>
                   child: ScaleTransition(
                     scale: _scaleAnimations[5],
                     child: Image.asset(
-                      'assets/images/tom.png',
+                      'assets/images/tom1.png',
                       fit: BoxFit.contain,
                       height: 140,
                       width: 140,
@@ -204,7 +204,7 @@ class _MainLayout2State extends State<MainLayout2>
                   child: ScaleTransition(
                     scale: _scaleAnimations[7],
                     child: Image.asset(
-                      'assets/images/tom.png',
+                      'assets/images/tom3.png',
                       fit: BoxFit.contain,
                       height: 140,
                       width: 140,
@@ -219,7 +219,7 @@ class _MainLayout2State extends State<MainLayout2>
                   child: ScaleTransition(
                     scale: _scaleAnimations[6],
                     child: Image.asset(
-                      'assets/images/tom.png',
+                      'assets/images/tom2.png',
                       fit: BoxFit.contain,
                       height: 140,
                       width: 140,
@@ -234,7 +234,7 @@ class _MainLayout2State extends State<MainLayout2>
                   child: ScaleTransition(
                     scale: _scaleAnimations[8],
                     child: Image.asset(
-                      'assets/images/crash.png',
+                      'assets/images/crashr.png',
                       fit: BoxFit.contain,
                       height: 145,
                       width: 145,
@@ -279,7 +279,7 @@ class _MainLayout2State extends State<MainLayout2>
                   child: ScaleTransition(
                     scale: _scaleAnimations[11],
                     child: Image.asset(
-                      'assets/images/crash.png',
+                      'assets/images/crashl.png',
                       fit: BoxFit.contain,
                       height: 170,
                       width: 170,
