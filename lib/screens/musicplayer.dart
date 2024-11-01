@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:rell_drum/screens/home.dart';
+import 'home.dart';
+import 'lefty_ui.dart';
 
 class MusicPlayer extends StatefulWidget {
   final String filePath;
@@ -15,6 +16,28 @@ class _MusicPlayerState extends State<MusicPlayer> {
   late AudioPlayer _audioPlayer;
   bool isPlaying = false;
   double _volume = 0.5; // Default volume level (50%)
+  Widget _currentBody = const MainLayout();
+  double _opacity = 1.0;
+
+  void _changeBody() {
+    setState(() {
+      _opacity = 0.0;
+    });
+
+    Future.delayed(const Duration(milliseconds: 300), () {
+      setState(() {
+        _currentBody = _currentBody is MainLayout
+            ? const MainLayout2()
+            : const MainLayout();
+        _opacity = 1.0;
+      });
+    });
+  }
+
+  Color _getColorWithOpacity(double opacity) {
+    int alpha = (opacity * 255).round(); // Convert opacity to alpha value
+    return Color((alpha << 24) | 0xff101720);
+  }
 
   @override
   void initState() {
@@ -162,22 +185,32 @@ class _MusicPlayerState extends State<MusicPlayer> {
               Row(
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.skip_previous_rounded, color: Color(0xffEEC640)),
+                    icon: const Icon(Icons.skip_previous_rounded,
+                        color: Color(0xffEEC640)),
                     onPressed: _skipBack,
                   ),
                   IconButton(
                     icon: Icon(
-                      isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
-                    color:const Color(0xffEEC640)),
+                        isPlaying
+                            ? Icons.pause_rounded
+                            : Icons.play_arrow_rounded,
+                        color: const Color(0xffEEC640)),
                     onPressed: isPlaying ? _pauseMusic : _resumeMusic,
                   ),
                   IconButton(
-                    icon: const Icon(Icons.skip_next_rounded, color: Color(0xffEEC640)),
+                    icon: const Icon(Icons.skip_next_rounded,
+                        color: Color(0xffEEC640)),
                     onPressed: _skipForward,
                   ),
                   IconButton(
-                    icon: const Icon(Icons.volume_up_rounded, color: Color(0xffEEC640)),
+                    icon: const Icon(Icons.volume_up_rounded,
+                        color: Color(0xffEEC640)),
                     onPressed: () => _showVolumeSlider(context),
+                  ),
+                  IconButton(
+                    icon: Image.asset('assets/icons/rightoleft.png',
+                        height: 24, width: 24),
+                    onPressed: _changeBody,
                   ),
                 ],
               ),
@@ -185,7 +218,19 @@ class _MusicPlayerState extends State<MusicPlayer> {
           ),
         ),
       ),
-      body: const MainLayout(),
+      body: Stack(
+        children: [
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            color: _getColorWithOpacity(_opacity),
+          ),
+          AnimatedOpacity(
+            opacity: _opacity,
+            duration: const Duration(milliseconds: 300),
+            child: _currentBody,
+          ),
+        ],
+      ),
     );
   }
 }

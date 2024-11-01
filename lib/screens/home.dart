@@ -21,7 +21,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
         12,
         (index) => AnimationController(
               vsync: this,
-              duration: Duration(milliseconds: 50),
+              duration: const Duration(milliseconds: 30),
             ));
     _scaleAnimations = _controllers
         .map((controller) =>
@@ -33,9 +33,8 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
   }
 
   void _onTap(int index) {
-    // Start the zoom-in animation for the tapped image
     _controllers[index].forward().then((_) {
-      Future.delayed(Duration(milliseconds: 50), () {
+      Future.delayed(const Duration(milliseconds: 30), () {
         _controllers[index].reverse();
       });
     });

@@ -29,9 +29,9 @@ class AboutLayoutState extends State<AboutLayout> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-                'assets/images/about_bg.png'), // Replace with your image path
+                'assets/images/about_bg.png'), 
             fit: BoxFit
-                .cover, // Adjusts the image to cover the entire background
+                .cover, 
           ),
         ),
         child: Center(
@@ -40,7 +40,7 @@ class AboutLayoutState extends State<AboutLayout> {
             margin: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
               color: const Color(0xff101720).withOpacity(
-                  0.8), // Semi-transparent background for better readability
+                  0.8), 
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: const Column(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'screens/home.dart';
 import 'screens/lefty_ui.dart';
-import 'screens/musicplayer.dart';
 import 'screens/about.dart';
 import 'screens/music_choose.dart';
 
@@ -41,6 +40,11 @@ class _MainAppState extends State<MainApp> {
     });
   }
 
+  Color _getColorWithOpacity(double opacity) {
+    int alpha = (opacity * 255).round(); // Convert opacity to alpha value
+    return Color((alpha << 24) | 0xff101720);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -62,7 +66,7 @@ class _MainAppState extends State<MainApp> {
                     fontSize: 30,
                   ),
                 ),
-                const Spacer(), // Spacer to push icons to the right
+                const Spacer(),
                 Row(
                   children: [
                     Builder(
@@ -124,10 +128,18 @@ class _MainAppState extends State<MainApp> {
             ),
           ),
         ),
-        body: AnimatedOpacity(
-          opacity: _opacity,
-          duration: const Duration(milliseconds: 300),
-          child: _currentBody,
+        body: Stack(
+          children: [
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              color: _getColorWithOpacity(_opacity),
+            ),
+            AnimatedOpacity(
+              opacity: _opacity,
+              duration: const Duration(milliseconds: 300),
+              child: _currentBody,
+            ),
+          ],
         ),
       ),
     );

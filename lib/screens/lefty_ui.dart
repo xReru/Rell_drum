@@ -20,7 +20,7 @@ class _MainLayout2State extends State<MainLayout2>
         12,
         (index) => AnimationController(
               vsync: this,
-              duration: Duration(milliseconds: 50),
+              duration: const Duration(milliseconds: 30),
             ));
     _scaleAnimations = _controllers
         .map((controller) =>
@@ -34,7 +34,7 @@ class _MainLayout2State extends State<MainLayout2>
   void _onTap(int index) {
     // Start the zoom-in animation for the tapped image
     _controllers[index].forward().then((_) {
-      Future.delayed(Duration(milliseconds: 50), () {
+      Future.delayed(const Duration(milliseconds: 30), () {
         _controllers[index].reverse();
       });
     });
@@ -108,7 +108,7 @@ class _MainLayout2State extends State<MainLayout2>
               right: 620,
               top: 210,
               child: GestureDetector(
-                onTap: () => _onTap(0), // Pass the index for the audio
+                onTap: () => _onTap(0),
                 child: ScaleTransition(
                   scale: _scaleAnimations[0],
                   child: Image.asset(
