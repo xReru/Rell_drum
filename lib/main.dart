@@ -88,22 +88,6 @@ class _MainAppState extends State<MainApp> {
                     Builder(
                       builder: (BuildContext context) {
                         return IconButton(
-                          icon: const Icon(Icons.import_export_rounded,
-                              color: Color(0xffEEC640)),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const AboutLayout(),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    ),
-                    Builder(
-                      builder: (BuildContext context) {
-                        return IconButton(
                           icon:
                               const Icon(Icons.info, color: Color(0xffEEC640)),
                           onPressed: () {
