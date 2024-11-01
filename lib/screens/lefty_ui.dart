@@ -108,7 +108,7 @@ class _MainLayout2State extends State<MainLayout2>
               right: 620,
               top: 210,
               child: GestureDetector(
-                onTap: () => _onTap(0),
+                onTapDown: (_) => _onTap(0),
                 child: ScaleTransition(
                   scale: _scaleAnimations[0],
                   child: Image.asset(
@@ -124,7 +124,7 @@ class _MainLayout2State extends State<MainLayout2>
               left: 160,
               top: 200,
               child: GestureDetector(
-                onTap: () => _onTap(1),
+                onTapDown: (_) => _onTap(1),
                 child: ScaleTransition(
                   scale: _scaleAnimations[1],
                   child: Image.asset(
@@ -140,11 +140,11 @@ class _MainLayout2State extends State<MainLayout2>
               left: 420,
               top: 200,
               child: GestureDetector(
-                  onTap: () => _onTap(2),
+                  onTapDown: (_) => _onTap(2),
                   child: ScaleTransition(
                     scale: _scaleAnimations[2],
                     child: Image.asset(
-                      'assets/images/kick.png',
+                      'assets/images/kickl.png',
                       fit: BoxFit.contain,
                       height: 180,
                       width: 180,
@@ -155,7 +155,7 @@ class _MainLayout2State extends State<MainLayout2>
               left: 295,
               top: 190,
               child: GestureDetector(
-                  onTap: () => _onTap(3),
+                  onTapDown: (_) => _onTap(3),
                   child: ScaleTransition(
                     scale: _scaleAnimations[3],
                     child: Image.asset(
@@ -170,7 +170,7 @@ class _MainLayout2State extends State<MainLayout2>
               left: 600,
               top: 180,
               child: GestureDetector(
-                  onTap: () => _onTap(4),
+                  onTapDown: (_) => _onTap(4),
                   child: ScaleTransition(
                     scale: _scaleAnimations[4],
                     child: Image.asset(
@@ -185,7 +185,7 @@ class _MainLayout2State extends State<MainLayout2>
                 left: 200,
                 top: 135,
                 child: GestureDetector(
-                  onTap: () => _onTap(5),
+                  onTapDown: (_) => _onTap(5),
                   child: ScaleTransition(
                     scale: _scaleAnimations[5],
                     child: Image.asset(
@@ -200,7 +200,7 @@ class _MainLayout2State extends State<MainLayout2>
               left: 420,
               top: 135,
               child: GestureDetector(
-                  onTap: () => _onTap(7),
+                  onTapDown: (_) => _onTap(7),
                   child: ScaleTransition(
                     scale: _scaleAnimations[7],
                     child: Image.asset(
@@ -215,7 +215,7 @@ class _MainLayout2State extends State<MainLayout2>
                 left: 310,
                 top: 100,
                 child: GestureDetector(
-                  onTap: () => _onTap(6),
+                  onTapDown: (_) => _onTap(6),
                   child: ScaleTransition(
                     scale: _scaleAnimations[6],
                     child: Image.asset(
@@ -230,7 +230,7 @@ class _MainLayout2State extends State<MainLayout2>
               left: 410,
               top: 40,
               child: GestureDetector(
-                  onTap: () => _onTap(8),
+                  onTapDown: (_) => _onTap(8),
                   child: ScaleTransition(
                     scale: _scaleAnimations[8],
                     child: Image.asset(
@@ -245,7 +245,7 @@ class _MainLayout2State extends State<MainLayout2>
               left: 560,
               top: 40,
               child: GestureDetector(
-                  onTap: () => _onTap(9),
+                  onTapDown: (_) => _onTap(9),
                   child: ScaleTransition(
                     scale: _scaleAnimations[9],
                     child: Image.asset(
@@ -260,7 +260,7 @@ class _MainLayout2State extends State<MainLayout2>
               left: 57,
               top: 125,
               child: GestureDetector(
-                  onTap: () => _onTap(10),
+                  onTapDown: (_) => _onTap(10),
                   child: ScaleTransition(
                     scale: _scaleAnimations[10],
                     child: Image.asset(
@@ -275,7 +275,7 @@ class _MainLayout2State extends State<MainLayout2>
               left: 160,
               top: 20,
               child: GestureDetector(
-                  onTap: () => _onTap(11),
+                  onTapDown: (_) => _onTap(11),
                   child: ScaleTransition(
                     scale: _scaleAnimations[11],
                     child: Image.asset(
