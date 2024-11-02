@@ -62,6 +62,8 @@ class _MainAppState extends State<MainApp> {
                 const Text(
                   'Rell Drum',
                   style: TextStyle(
+                    fontFamily: 'GoodTiming',
+                    fontWeight: FontWeight.bold,
                     color: Color(0xffEEC640),
                     fontSize: 30,
                   ),

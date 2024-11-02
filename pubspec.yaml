@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   permission_handler: ^11.3.1
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:
@@ -19,6 +20,15 @@ dev_dependencies:
   flutter_lints: ^4.0.0
 
 flutter:
+  fonts:
+  - family: GoodTiming
+    fonts:
+      - asset: assets/fonts/goodtiming.otf
+        weight: 400
+  - family: Bebas
+    fonts:
+      - asset: assets/fonts/Bebas.otf
+        weight: 400
   uses-material-design: true
   assets:
     - assets/images/

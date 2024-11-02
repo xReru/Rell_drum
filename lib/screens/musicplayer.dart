@@ -109,7 +109,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
           backgroundColor: const Color(0xff101720),
           content: SizedBox(
             width: 250,
-            height: 100, // Adjusted height to fit the text label
+            height: 100,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -177,6 +177,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
               const Text(
                 'Rell Drum',
                 style: TextStyle(
+                  fontFamily: 'GoodTiming',
                   color: Color(0xffEEC640),
                   fontSize: 30,
                 ),

@@ -123,7 +123,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
               left: 420,
               top: 200,
               child: GestureDetector(
-                onTapDown: (_) => _onTap(1),
+                onTapDown: (_) => _onTap(2),
                 child: ScaleTransition(
                   scale: _scaleAnimations[2],
                   child: Image.asset(

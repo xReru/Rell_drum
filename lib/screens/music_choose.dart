@@ -91,7 +91,8 @@ class _MusicChooseState extends State<MusicChoose> {
                   hintStyle: TextStyle(color: Color(0xffEEC640)),
                   border: InputBorder.none,
                 ),
-                style: const TextStyle(color: Color(0xffEEC640)),
+                style: const TextStyle(
+                    color: Color(0xffEEC640), fontFamily: 'GoodTiming'),
                 onChanged: _filterMusicFiles,
               ),
             ),
@@ -122,7 +123,7 @@ class _MusicChooseState extends State<MusicChoose> {
                     return ListTile(
                       title: Text(
                         file.path.split('/').last,
-                        style: const TextStyle(color: Color(0xffEEC640)),
+                        style: const TextStyle(color: Color(0xffEEC640),fontFamily: 'GoodTiming',),
                       ),
                       leading: const Icon(Icons.music_note,
                           color: Color(0xffEEC640)),
@@ -139,5 +140,4 @@ class _MusicChooseState extends State<MusicChoose> {
     _searchController.dispose();
     super.dispose();
   }
-
 }
