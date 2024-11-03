@@ -5,11 +5,12 @@ import 'screens/lefty_ui.dart';
 import 'screens/about.dart';
 import 'screens/music_choose.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+  await Future.delayed(const Duration(seconds:1));
   runApp(const MainApp());
 }
 
